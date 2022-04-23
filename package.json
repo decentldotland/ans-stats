@@ -1,0 +1,36 @@
+{
+  "name": "ans-stats",
+  "version": "0.0.1",
+  "description": "statistics API for Arweave Name Service (ANS)",
+  "main": "./src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentldotland/ans-stats.git"
+  },
+  "keywords": [
+    "ANS",
+    "API",
+    "Arweave"
+  ],
+  "author": "charmful0x",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/decentldotland/ans-stats/issues"
+  },
+  "homepage": "https://github.com/decentldotland/ans-stats#readme",
+  "dependencies": {
+    "arweave": "^1.10.23",
+    "axios": "^0.26.1",
+    "base64url": "^3.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "install": "^0.13.0",
+    "node-cache": "^5.1.2",
+    "redstone-api": "^0.4.11",
+    "redstone-smartweave": "^0.4.75"
+  }
+}
