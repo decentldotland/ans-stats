@@ -11,7 +11,7 @@
 ### 1- Cached ANS State 
 
 ```sh
-GET /feeds
+GET /users
 ```
 return a cached state of the ANS smart contract.
 
