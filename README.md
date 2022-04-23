@@ -6,7 +6,9 @@
   <p align="center">statistics cache node & API for Arweave Name Service (ANS)</p>
 </p>
 
-## API Enpoints
+## API Endpoint
+This API is hosted on [ans-stats.decent.land](https://ans-stats.decent.land)
+## API Methods
 
 ### 1- Cached ANS State 
 
