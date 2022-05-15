@@ -1,12 +1,13 @@
 import Arweave from "arweave";
-import { BLOCK_SLEEPING_TIMEOUT } from "./constants.js";
+import axios from "axios";
+import { BLOCK_SLEEPING_TIMEOUT, WALLET_LIST } from "./constants.js";
 
-export const arweave =  new Arweave.init({
-	host: "arweave.net",
-	protocol: "https",
-	port: 443,
-	timeout: 60000,
-	logging: false,
+export const arweave = new Arweave.init({
+  host: "arweave.net",
+  protocol: "https",
+  port: 443,
+  timeout: 60000,
+  logging: false,
 });
 
 export function timeout() {
@@ -16,4 +17,13 @@ export function timeout() {
     `\nsleeping for ${BLOCK_SLEEPING_TIMEOUT} network blocks or ${ms} ms\n`
   );
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export async function getWalletList() {
+  try {
+    const wallet_list = (await axios.get(WALLET_LIST))?.data;
+    return wallet_list;
+  } catch (error) {
+    console.log(error);
+  }
 }
