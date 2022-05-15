@@ -6,3 +6,4 @@ export const STATS_PENDING = {
   value_held_by_users: { ar: "pending", usd: "pending" },
 };
 export const BLOCK_SLEEPING_TIMEOUT = 10;
+export const WALLET_LIST = "https://arweave.net/wallet_list";
