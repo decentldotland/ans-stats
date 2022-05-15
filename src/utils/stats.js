@@ -1,7 +1,7 @@
 import redstone from "redstone-api";
 import base64url from "base64url";
 import { getAnsState } from "./cache.js";
-import { arweave } from "./arweave.js";
+import { arweave, getWalletList } from "./arweave.js";
 
 async function getUsersCount() {
   try {
@@ -21,10 +21,7 @@ async function getUsersCount() {
 
 async function getUsersBalances() {
   try {
-    let totalBalances = 0;
     const encodedState = await getAnsState();
-    const arTokenRate = (await redstone.getPrice("AR"))?.value;
-    const state = JSON.parse(base64url.decode(encodedState));
 
     if (encodedState === "e30") {
       return {
@@ -33,14 +30,15 @@ async function getUsersBalances() {
       };
     }
 
-    let ar_balance;
+    const walletList = await getWalletList();
+    const arTokenRate = (await redstone.getPrice("AR"))?.value;
+    const state = JSON.parse(base64url.decode(encodedState));
 
-    for (let user of state.res) {
-      const userBalance = await arweave.wallets.getBalance(user.user);
-      totalBalances += Number(userBalance);
-    }
-
-    totalBalances *= 1e-12;
+    const usersbalances = walletList.filter((wallet) =>
+      state.res.find((usr) => wallet.address === usr.user)
+    );
+    const balancesArray = usersbalances.map((wallet) => Number(wallet.balance));
+    const totalBalances = balancesArray.reduce((a, b) => a + b, 0) * 1e-12;
 
     return {
       ar: totalBalances,
