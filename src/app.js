@@ -30,6 +30,21 @@ app.get("/stats", async (req, res) => {
   res.send(jsonRes);
 });
 
+app.get("/profile/:label_addr", async (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+
+  const encodedState = await getAnsState();
+  const decodedState = JSON.parse(base64url.decode(encodedState));
+  const label_addr = req.params.label_addr;
+
+  const profile =
+    label_addr.length === 43
+      ? decodedState?.res?.find((label) => label.user === label_addr)
+      : decodedState?.res?.find((label) => label.currentLabel === label_addr);
+
+  res.send(profile);
+});
+
 app.listen(port, async () => {
   await polling();
   console.log(`listening at PORT: ${port}`);
