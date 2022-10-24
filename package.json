@@ -1,6 +1,6 @@
 {
   "name": "ans-stats",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "statistics API for Arweave Name Service (ANS)",
   "main": "./src/app.js",
   "type": "module",
