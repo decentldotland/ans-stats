@@ -25,6 +25,14 @@ GET /stats
 
 return statistics and data related to the ANS smart contract.
 
+### 3- Profile lookup
+
+```sh
+GET /profile/label_addr
+```
+
+return a user's profile using the Arweave address or the `currentLabel`
+
 ### Attention
 These API endpoints' purpose is only to fetch network statistics of the ANS protocol. The cached contract state does not reflect the latest contract state (real execution time), therefore it cannot be used as ANS state equivalent.
 
