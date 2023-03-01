@@ -35,7 +35,7 @@ export async function getAnsExmState() {
       const migrated = await arPageUser(user);
       newState.push(migrated)
     }
-    return base64url(JSON.stringify({res: migrated}));
+    return base64url(JSON.stringify({res: newState}));
   } catch(error) {
     console.log(error);
     return error;
