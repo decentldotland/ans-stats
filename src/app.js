@@ -2,6 +2,7 @@ import express from "express";
 import base64url from "base64url";
 import cors from "cors";
 import { polling, getAnsState, getStats } from "./utils/cache.js";
+import { getAnsExmState } from "./utils/exm.js";
 
 const app = express();
 
@@ -16,24 +17,26 @@ app.use(
 app.get("/users", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
-  const encodedState = await getAnsState();
+  // const encodedState = await getAnsState();
+  const encodedState = await getAnsExmState();
   const jsonRes = JSON.parse(base64url.decode(encodedState));
   res.send(jsonRes);
 });
 
-app.get("/stats", async (req, res) => {
-  res.setHeader("Content-Type", "application/json");
+// app.get("/stats", async (req, res) => {
+//   res.setHeader("Content-Type", "application/json");
 
-  const encodedStats = await getStats();
-  const jsonRes = JSON.parse(base64url.decode(encodedStats));
+//   const encodedStats = await getStats();
+//   const jsonRes = JSON.parse(base64url.decode(encodedStats));
 
-  res.send(jsonRes);
-});
+//   res.send(jsonRes);
+// });
 
 app.get("/profile/:label_addr", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
-  const encodedState = await getAnsState();
+  // const encodedState = await getAnsState();
+  const encodedState = await getAnsExmState();
   const decodedState = JSON.parse(base64url.decode(encodedState));
   const label_addr = req.params.label_addr;
 
@@ -46,6 +49,6 @@ app.get("/profile/:label_addr", async (req, res) => {
 });
 
 app.listen(port, async () => {
-  await polling();
+  // await polling();
   console.log(`listening at PORT: ${port}`);
 });
