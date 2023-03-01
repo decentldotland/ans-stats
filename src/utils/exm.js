@@ -13,7 +13,8 @@ async function arPageUser(user) {
     user.nickname = `${user.primary_domain}.ar`;
     user.bio = `an Arweaver from the permaweb`;
     user.address_color = user.ownedLabels[0].color;
-    user.avatar = user.avatar ? user.avatar : "pOOhf_k7ZFT3LwdQz1Fa2ltBzVgriFw4N1hJkG3GYUA";
+//     user.avatar = user.avatar ? user.avatar : "pOOhf_k7ZFT3LwdQz1Fa2ltBzVgriFw4N1hJkG3GYUA";
+    user.avatar = "";
     user.links = {};
 
     for (const key of delKeys) {
