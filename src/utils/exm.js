@@ -31,7 +31,7 @@ async function arPageUser(user) {
 export async function getAnsExmState() {
   try {
     const newState = [];
-    const state = (await axios.get(`https://api.exm.dev/read/VGWeJLDLJ9ify3ezl9tW-9fhB0G-GIUd60FE-5Q-_VI`))?.data;
+    const state = (await axios.get(`https://api.exm.dev/read/EcSNZ9aaZkK7OngLqunLvDPp0CNc2JBVqwBRrFewZnU`))?.data;
     for (const user of state.balances) {
       const migrated = await arPageUser(user);
       newState.push(migrated)
