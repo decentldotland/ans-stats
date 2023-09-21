@@ -31,7 +31,7 @@ async function arPageUser(user) {
 export async function getAnsExmState() {
   try {
     const newState = [];
-    const state = (await axios.get(`https://api.mem.tech/api/state/rExhMDVqLfSTdSCwG95_VOe2a3MuKGA0ukGPO0ra9GQ`))?.data;
+    const state = (await axios.get(`https://api.mem.tech/api/state/Tih8T1uESATJNzdwBIY3rpe25kWTzjw8uNiMRYe9I5M`))?.data;
     for (const user of state.balances) {
       const migrated = await arPageUser(user);
       newState.push(migrated)
